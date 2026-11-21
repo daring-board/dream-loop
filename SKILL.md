@@ -26,12 +26,11 @@ Create and use a `.dream-loop` folder for working context/files, and gitignore i
 
 ## The target image
 
-The key piece of Dream Loop is to first create the "dream version" of the user request using image generation, then iterate to build it.
+The key piece of Dream Loop is to start from a "dream version" of the user request, then iterate to build it. Image generation is optional when the user supplies a target image created elsewhere.
 
-If the user supplies this, use that directly.
-If not, you need to generate it.
+If the user supplies or points to a target image, use it directly and do not generate a replacement. If it is outside the project, copy it into `.dream-loop/target.png` (create the folder if needed; it is gitignored). The user can also place it there before starting and ask you to use that path. If the user does not supply an image, generate one.
 
-If you don't have an image generation tool, stop and ask the user to either provide the target image, or connect you to an image generation API.
+If no target image is supplied and you don't have an image generation tool, stop and ask the user to provide one or connect you to an image generation API.
 
 Before generating the image, determine if there is an existing product or if you're starting fresh. If fresh, you can directly generate a new image. If there's an existing product, you should capture a screenshot of the current version of it, then use that as the baseline input to the image model and generate a refined version of it based on the user direction, so that it is an improvement over the original and not a divergence.
 
